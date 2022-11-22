@@ -7,15 +7,16 @@ if(isset($_SESSION["loggedin"])){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         // if (isset($_POST['searchby'])){
             $date = $_POST['date'];
-            if ($_POST['searchby'] == 'name'){
-                $query = "SELECT * FROM USERLOG WHERE DATE = '$date'";
-            }
+            $query = "SELECT * FROM STUDENT";
+            $postdata = TRUE;
+            
         }
 else{
             $query = "SELECT * FROM USERLOG";
         }
     
         $dataAvailable = mysqli_query($conn, $query);
+        // print_r($dataAvailable);
 }
 else{
     echo "<script>alert('Unauthorised access!!!!')</script>";
