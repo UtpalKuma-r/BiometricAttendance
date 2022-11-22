@@ -1,7 +1,7 @@
 <?php
 include "_connection.php";
 
-if(isset($_POST)){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $password = $_POST['password'];
     
@@ -10,7 +10,8 @@ if(isset($_POST)){
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) == 0){
-        echo "alert('Username invalid')";
+        echo "<script>alert('Invalid Username')</script>";
+        echo "<script>document.location.href='index.php';</script>";
     }
 
     else{
@@ -19,11 +20,14 @@ if(isset($_POST)){
         $cpassword = $row["HASH"];
 
         if($password == $cpassword){
-            echo "Loged in";
+            session_start();
+            $_SESSION['loggedin'] = TRUE;
+            echo "<script>document.location.href='alluser.php';</script>";
         }
 
         else{
-            echo "Wrong Password";
+            echo "<script>alert('Wrong Password')</script>";
+            echo "<script>document.location.href='index.php';</script>";
         }
     }
 }

@@ -17,7 +17,7 @@
             <img src="img/dsulogo.png" alt="">
         </div>
         <div class="login">
-            <form action="additionals/_login.php" method="post">
+            <form method="post">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="Username">
             <label for="password">Password</label>
@@ -28,3 +28,6 @@
     </div>
 </body>
 </html>
+<?php
+include "additionals/_login.php";
+?>
