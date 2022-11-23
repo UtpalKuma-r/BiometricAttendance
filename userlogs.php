@@ -93,9 +93,9 @@ include "additionals/_userlogs.php";
             $exporttable .= '</table>';
             echo $exporttable;
         ?>
-    
-    
-        <form action="" method="post"><input type="submit" name="button1" value="Export to excel" /></form>
+        <?php echo $exporttable ?>
+        <a href="exp.php?data=<?php $exporttable ?>">Export to excel</a>
+        <!-- <form action="" method="post"><input type="submit" name="button1" value="Export to excel" /></form> -->
         <!-- <input type="submit" name="button1" value="Export to excel" /> -->
         <!-- <button onclick></button> -->
     
