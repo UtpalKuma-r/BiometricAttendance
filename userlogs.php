@@ -18,7 +18,7 @@ include "additionals/_userlogs.php";
 </script> -->
 <body>
     <form method="post">
-        <input type="date" name="date" id="date">
+        <input type="date" name="date" id="date" value = <?php echo date("d-m-Y") ?>>
         <button type="submit">View</button>
     
     </form>
@@ -91,10 +91,14 @@ include "additionals/_userlogs.php";
                 
                 
             $exporttable .= '</table>';
+            
             echo $exporttable;
+            // session_start();
+            // $_SESSION['data'] = $exporttable;
+            // define('senddata', $exporttable);
+            // echo senddata;
         ?>
-        <?php echo $exporttable ?>
-        <a href="exp.php?data=<?php $exporttable ?>">Export to excel</a>
+        <!-- <a href='exp.php?data=<?php  senddata ?>'>Export to excel</a> -->
         <!-- <form action="" method="post"><input type="submit" name="button1" value="Export to excel" /></form> -->
         <!-- <input type="submit" name="button1" value="Export to excel" /> -->
         <!-- <button onclick></button> -->

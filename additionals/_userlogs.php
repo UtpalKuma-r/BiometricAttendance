@@ -15,7 +15,7 @@ if(isset($_SESSION["loggedin"])){
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
             $date = $_POST['date'];
-            $query = "SELECT * FROM STUDENT";
+            $query = "SELECT * FROM STUDENT ";
             $postdata = TRUE;
             
     }
