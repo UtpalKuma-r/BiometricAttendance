@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/modify.css">
     <title>Modify</title>
 </head>
+<?php
+    include "additionals/_modify.php";
+?>
 <body>
 
     <div class="header">
@@ -15,30 +18,28 @@
     </div>
 
     <div class="mid">
-        <div class="adduser">
+        <div class="same">
             <fieldset>
                 <legend>Add Student</legend>
                 <form action="" method="post">
-                    <label for="userid">Userid: </label>
-                    <input type="text" name="uid" id="uid">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name">
                     <label for="room">Room</label>
                     <input type="number" name="room" id="room">
                     <label for="contact">Contact</label>
                     <input type="text" name="contact" id="contact">
-                    <button type="submit">Add Student</button>
+                    <button type="submit" name="add">Add Student</button>
                 </form>
             </fieldset>
         </div>
 
-        <div class="remove">
+        <div class="same">
             <fieldset>
                 <legend>Remove Student</legend>
                 <form action="" method="post">
                     <label for="uid">Userid</label>
                     <input type="text" name="uid" id="uid">
-                    <button type="submit">Remove</button>
+                    <button type="submit" name="remove">Remove</button>
                 </form>
             </fieldset>
         </div>

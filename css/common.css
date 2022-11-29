@@ -28,3 +28,19 @@ fieldset{
 legend{
     font-size: xxx-large;
 }
+
+table{
+    width: 100%;
+    height: 90%;
+    margin-top: 2%;
+    border: solid 2px;
+    border-collapse: collapse;
+}
+
+tr{
+    border-bottom: 2px solid black;
+}
+
+td{
+    text-align: center;
+}

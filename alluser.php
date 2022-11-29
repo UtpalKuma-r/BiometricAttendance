@@ -57,7 +57,7 @@ include "additionals/_alluser.php";
                     } 
                     else{
                         while ($row = mysqli_fetch_assoc($dataAvailable)){
-                        echo "<TR><TD width=200>$row[userid]</TD><TD width=400>$row[name]</TD><TD width=150>$row[room]</TD><TD>$row[contact]</TR>";
+                        echo "<TR><TD width=200>$row[uid]</TD><TD width=400>$row[name]</TD><TD width=150>$row[room]</TD><TD>$row[contact]</TR>";
                         }
                     }
                     

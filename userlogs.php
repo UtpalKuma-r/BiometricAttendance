@@ -39,7 +39,7 @@ include "additionals/_userlogs.php";
                     <th>Attendence</th></tr>
                     <?php
                         if (mysqli_num_rows($dataAvailable) == 0){
-                            echo "<TR><TD colspan=3 style='margin:auto;'>No data available</TD></TR>";
+                            echo "<TR><TD colspan=5 style='margin:auto;'>No data available</TD></TR>";
                         } 
                         else{
                             while ($row = mysqli_fetch_assoc($dataAvailable)){
