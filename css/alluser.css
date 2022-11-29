@@ -1,0 +1,42 @@
+.mid{
+    display: flex;
+    justify-content: space-evenly;
+}
+.search{
+    width: 30%;
+    height: 100%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+span{
+    margin-left: 25%;
+}
+
+button{
+    width: 50%;
+    margin: 2vh auto;
+    /* margin-top: 2vh; */
+}
+
+.result{
+    width: 65%;
+    height: 100%;
+    /* border: solid 1vh; */
+}
+
+table{
+    width: 100%;
+    height: 90%;
+    margin-top: 2%;
+    border: solid 2px;
+    border-collapse: collapse;
+}
+
+tr{
+    border-bottom: 2px solid black;
+}

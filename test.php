@@ -1,27 +1,18 @@
-<?php 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+</head>
+<body>
+  <H1>THIS IS A TEST PAGE</H1>
+  <form action="exp.php" method="post">
+    <input type="text" name="text" id="text">
+    <button type="submit" name="button">Submit Button</button>
+  </form>
+</body>
 
-include "additionals/_connection.php";
-// $conn = new mysqli('localhost', 'root', '');  
-// mysqli_select_db($conn, 'crud');  
-$sql = "SELECT * FROM `student`";  
-$setRec = mysqli_query($conn, $sql);  
-$columnHeader = '';  
-$columnHeader = "User Id" . "\t" . "First Name" . "\t" . "Last Name" . "\t";  
-$setData = '';  
-  while ($rec = mysqli_fetch_row($setRec)) {  
-    $rowData = '';  
-    foreach ($rec as $value) {  
-        $value = '"' . $value . '"' . "\t";  
-        $rowData .= $value;  
-    }  
-    $setData .= trim($rowData) . "\n";  
-}  
-  
-header("Content-type: application/octet-stream");  
-header("Content-Disposition: attachment; filename=User_Detail.xls");  
-header("Pragma: no-cache");  
-header("Expires: 0");  
 
-  echo ucwords($columnHeader) . "\n" . $setData . "\n";  
- ?> 
- 
+</html>
