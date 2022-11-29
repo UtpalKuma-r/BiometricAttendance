@@ -1,0 +1,32 @@
+.mid{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.adduser{
+    width: 48%;
+    height: 100%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.remove{
+    width: 48%;
+    height: 100%;
+}
+
+input{
+    width: 50%;
+    margin: auto 10px;
+    padding: 5px;
+}
+
+button{
+    width: 50%;
+    margin: 10px auto;
+    padding: 5px;
+}

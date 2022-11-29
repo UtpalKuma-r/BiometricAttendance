@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/userlogs.css">
     <title>Userlog</title>
 </head>
 <?php
@@ -18,92 +18,44 @@ include "additionals/_userlogs.php";
         <?php include "additionals/_header.html"; ?>
     </div>
     
-    <form method="post">
-        <input type="date" name="date" id="date" value = <?php echo date("d-m-Y") ?>>
-        <button type="submit">View</button>
-    
-    </form>
+    <div class="mid">
+        <div class="search">
+            <fieldset>
+                <legend>Search:</legend>
+                <form method="post">
+                    <input type="date" name="date" id="date">
+                    <button type="submit">View</button>
+                </form>
+            </fieldset>
+        </div> 
 
-    <div class="viewarea">
-
-        <?php
-            $exporttable = "";
-            $exporttable .= "
-            <table style='border: solid; border-color:red; border-width:2px;' id='studtable'>
-                <tr>
+        <div class="result">
+            <table>
+                    <tr>
                     <th>Name</th>
-                    <th>Room No</th>
+                    <th>Room No.</th>
                     <th>Date</th>
-                    <th>Time</th>
-                    <th>Attendence</th>
-                </tr>";
-                
-                    if (mysqli_num_rows($dataAvailable) == 0){
-                        $exporttable .= "<TR><TD width=200 colspan=5 >No data available</TD></TR>";
-                    } 
-                    else{
-
-                        if($postdata){
-                            // echo "data posted";
-                            while ($row = mysqli_fetch_assoc($dataAvailable)){
-                                print_r($row['userid']);
-                                $data = $row['userid'];
-                                $query = "SELECT * FROM USERLOG WHERE USERID = '$data' AND DATE = '$date'";
-                                $result = mysqli_query($conn, $query);
-
-                                if (mysqli_num_rows($result) == 0){
-                                    $exporttable .= "<TR>
-                                            <TD>$row[name]</TD>
-                                            <TD>$row[room]</TD>
-                                            <TD></TD>
-                                            <TD></TD>
-                                            <TD>Absent</TD>
-                                        </TR>";
-                                }
-
-                                else{
-                                    while($col = mysqli_fetch_assoc($result)){
-                                        $exporttable .= "<TR>
-                                            <TD>$col[name]</TD>
-                                            <TD>$col[room]</TD>
-                                            <TD>$col[date]</TD>
-                                            <TD>$col[time]</TD>
-                                            <TD>Present</TD>
-                                        </TR>";
-                                    }
-                                }
-                            
-                            }
-                        }
-
+                    <th>Time</th>                    
+                    <th>Attendence</th></tr>
+                    <?php
+                        if (mysqli_num_rows($dataAvailable) == 0){
+                            echo "<TR><TD colspan=3 style='margin:auto;'>No data available</TD></TR>";
+                        } 
                         else{
                             while ($row = mysqli_fetch_assoc($dataAvailable)){
-                                $exporttable .= "<TR>
-                                <TD>$row[name]</TD>
-                                <TD>$row[room]</TD>
-                                <TD>$row[date]</TD>
-                                <TD>$row[time]</TD>
-                                <TD>Present</TD>
-                            </TR>";
+                            echo "<TR><TD width=200>$row[userid]</TD><TD width=400>$row[name]</TD><TD width=150>$row[room]</TD><TD>$row[contact]</TR>";
                             }
-                        }
-                    }
-                    
-                
-                
-            $exporttable .= '</table>';
-            
-            echo $exporttable;
-            // session_start();
-            // $_SESSION['data'] = $exporttable;
-            // define('senddata', $exporttable);
-            // echo senddata;
-        ?>
-        <!-- <a href='exp.php?data=<?php  senddata ?>'>Export to excel</a> -->
-        <!-- <form action="" method="post"><input type="submit" name="button1" value="Export to excel" /></form> -->
-        <!-- <input type="submit" name="button1" value="Export to excel" /> -->
-        <!-- <button onclick></button> -->
-    
+                        }   
+                    ?>
+            </table>
+        </div>
+        <div style="display: flex;">
+            <button type="submit">Export to Excel</button>
+        </div>
+        
     </div>
+
+
+   
 </body>
 </html>
