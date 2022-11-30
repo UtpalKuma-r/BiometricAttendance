@@ -36,7 +36,7 @@ include "additionals/_alluser.php";
                 <span><input type="text" name="data" id="data"></span>
 
 
-                <button type="submit">Search</button>
+                <button type="submit" name="search">Search</button>
                 </form>
 
             </fieldset>

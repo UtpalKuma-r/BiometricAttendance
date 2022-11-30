@@ -1,17 +1,25 @@
 <?php
-include "_connection.php";
-
 session_start();
 if(isset($_SESSION["loggedin"])){
     // echo "<script>alert('you are logged in')</script>";
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-            // if (isset($_POST['searchby'])){
+    include_once "_connection.php";
+    if(isset($_POST['search'])){
+
                 $data = $_POST['data'];
+                $type = gettype($data);
+                
                 if ($_POST['searchby'] == 'name'){
                     $query = "SELECT * FROM STUDENT WHERE NAME = '$data'";
                 }
                 elseif($_POST['searchby'] == 'user'){
-                    $query = "SELECT * FROM STUDENT WHERE userid = '$data'";
+                    if($type == 'integer'){
+                        $query = "SELECT * FROM STUDENT WHERE uid = $data";
+                    }
+                    else{
+                        echo "<script>alert('Data must be integer when uid is selected')</script>";
+                        $query = "SELECT * FROM STUDENT";
+                    }
+                    
                 }
                 elseif($_POST['searchby'] == 'room'){
                     $query = "SELECT * FROM STUDENT WHERE room = '$data'";
@@ -24,8 +32,8 @@ if(isset($_SESSION["loggedin"])){
                 $query = "SELECT * FROM STUDENT";
             }
         
-            $dataAvailable = mysqli_query($conn, $query);
-    // }
+    $dataAvailable = mysqli_query($conn, $query);
+    mysqli_close($conn);
 
 }
 else{
