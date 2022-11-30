@@ -24,7 +24,7 @@ include "additionals/_userlogs.php";
                 <legend>Search:</legend>
                 <form method="post">
                     <input type="date" name="date" id="date">
-                    <button type="submit">View</button>
+                    <button type="submit" name="search">View</button>
                 </form>
             </fieldset>
         </div> 
@@ -43,7 +43,13 @@ include "additionals/_userlogs.php";
                         } 
                         else{
                             while ($row = mysqli_fetch_assoc($dataAvailable)){
-                            echo "<TR><TD width=200>$row[userid]</TD><TD width=400>$row[name]</TD><TD width=150>$row[room]</TD><TD>$row[contact]</TR>";
+                                print_r($row);
+                            //     $name = $row['name'];
+                            //     $room = $room['room'];
+                            //     $date = $room['date'];
+                            //     $time = $room['time'];
+                            //     $atten = $room['atten'];
+                            // echo "<TR><TD>$name</TD><TD>$room</TD><TD>$date</TD><TD>$time</td><td>$atten</TR>";
                             }
                         }   
                     ?>
