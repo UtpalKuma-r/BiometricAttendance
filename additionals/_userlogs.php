@@ -9,15 +9,17 @@ if(isset($_SESSION["loggedin"])){
 
     if(isset($_POST['search'])){
             $date = $_POST['date'];
-            $query = "SELECT STUDENT.NAME, STUDENT.ROOM, USERLOG.DATE, USERLOG.TIME, IF(STUDENT.UID IN (SELECT UID FROM USERLOG WHERE DATE = $date), 'P', 'A')
-            FROM STUDENT, USERLOG WHERE USERLOG.DATE = $date ";            
     }
 
     else{
-            $query = "SELECT * FROM STUDENT WHERE STUDENT.UID IN (SELECT * FROM USERLOG)";
+            $date = date('Y-m-d');
         }
-    
+    $_SESSION['date'] = $date;
+
+    $query = "SELECT STUDENT.NAME, STUDENT.ROOM, USERLOG.DATE, USERLOG.TIME, IF(STUDENT.UID IN (SELECT UID FROM USERLOG WHERE DATE = '$date'), 'Present', 'Absent') AS 'ATTENDANCE' 
+                FROM STUDENT, USERLOG WHERE USERLOG.DATE = '$date' ";
     $dataAvailable = mysqli_query($conn, $query);
+    
 
 
 }

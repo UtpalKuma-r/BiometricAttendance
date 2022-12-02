@@ -20,6 +20,7 @@ if(isset($_POST)){
     if(isset($_POST['register_fingre'])){
         include_once "additionals/_connection.php";
 
+        
         $query = "SELECT UID FROM STUDENT WHERE STATUS = `enroll`";
         $result = mysqli_query($conn, $query);
 

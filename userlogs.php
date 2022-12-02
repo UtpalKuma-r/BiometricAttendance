@@ -23,8 +23,17 @@ include "additionals/_userlogs.php";
             <fieldset>
                 <legend>Search:</legend>
                 <form method="post">
-                    <input type="date" name="date" id="date">
+                    <?php
+                        if(isset($_SESSION['date'])){
+                            $date = $_SESSION['date'];
+                        }
+                        else{
+                            $date = date('Y-n-d');
+                        }
+                    ?>
+                    <input type="date" name="date" id="date" value="<?php echo $date?>">
                     <button type="submit" name="search">View</button>
+                    <button type="submit" name="ETE" formaction="additionals/_exportToExcel.php">Export to Excel</button>
                 </form>
             </fieldset>
         </div> 
@@ -43,20 +52,20 @@ include "additionals/_userlogs.php";
                         } 
                         else{
                             while ($row = mysqli_fetch_assoc($dataAvailable)){
-                                print_r($row);
-                            //     $name = $row['name'];
-                            //     $room = $room['room'];
-                            //     $date = $room['date'];
-                            //     $time = $room['time'];
-                            //     $atten = $room['atten'];
-                            // echo "<TR><TD>$name</TD><TD>$room</TD><TD>$date</TD><TD>$time</td><td>$atten</TR>";
+                                $name = $row['NAME'];
+                                $room = $row['ROOM'];
+                                $date = $row['DATE'];
+                                $time = $row['TIME'];
+                                $atten = $row['ATTENDANCE'];
+                                echo "<TR><TD>$name</TD><TD>$room</TD><TD>$date</TD><TD>$time</td><td>$atten</TR>";
                             }
                         }   
                     ?>
             </table>
         </div>
+
         <div style="display: flex;">
-            <button type="submit">Export to Excel</button>
+            
         </div>
         
     </div>
